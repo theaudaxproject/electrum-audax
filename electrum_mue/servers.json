@@ -1,11 +1,11 @@
 {
-  "92.60.44.9": {
+  "electrum1.monetaryunit.org": {
     "pruning": "-",
     "s": "50002",
     "t": "50001",
     "version": "1.4"
   },
-  "92.60.47.4": {
+  "electrum2.monetaryunit.org": {
     "pruning": "-",
     "s": "50002",
     "t": "50001",
