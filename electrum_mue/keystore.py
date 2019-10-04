@@ -801,7 +801,7 @@ def from_seed(seed, passphrase, is_p2sh=False):
     if t == 'old':
         keystore = Old_KeyStore({})
         keystore.add_seed(seed)
-    elif t in ['standard', 'segwit']:
+    elif t in ['standard']:
         keystore = BIP32_KeyStore({})
         keystore.add_seed(seed)
         keystore.passphrase = passphrase
