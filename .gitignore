@@ -1,0 +1,27 @@
+####-*.patch
+*.pyc
+*.swp
+build/
+dist/
+*.egg/
+contrib/pyinstaller/
+Electrum-MUE.egg-info/
+electrum_mue/locale/
+.devlocaltmp/
+*_trial_temp
+packages
+env/
+.buildozer/
+bin/
+/app.fil
+.idea
+
+# icons
+electrum_mue/gui/kivy/theming/light-0.png
+electrum_mue/gui/kivy/theming/light.atlas
+
+# tests/tox
+.tox/
+.cache/
+.coverage
+.pytest_cache
