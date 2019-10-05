@@ -12,7 +12,7 @@ else:
 
 PYHOME = 'c:/python3'
 
-home = 'C:\\electrum-mue\\'
+home = 'C:\\electrum-audax\\'
 
 # see https://github.com/pyinstaller/pyinstaller/issues/2005
 hiddenimports = []
@@ -39,10 +39,10 @@ binaries += [b for b in collect_dynamic_libs('PyQt5') if 'qwindowsvista' in b[0]
 binaries += [('C:/tmp/libsecp256k1.dll', '.')]
 
 datas = [
-    (home+'electrum_mue/*.json', 'electrum_mue'),
-    (home+'electrum_mue/wordlist/english.txt', 'electrum_mue/wordlist'),
-    (home+'electrum_mue/locale', 'electrum_mue/locale'),
-    (home+'electrum_mue/plugins', 'electrum_mue/plugins'),
+    (home+'electrum_audax/*.json', 'electrum_audax'),
+    (home+'electrum_audax/wordlist/english.txt', 'electrum_audax/wordlist'),
+    (home+'electrum_audax/locale', 'electrum_audax/locale'),
+    (home+'electrum_audax/plugins', 'electrum_audax/plugins'),
     ('C:\\Program Files (x86)\\ZBar\\bin\\', '.'),
     (home+'electrum/gui/icons', 'electrum/gui/icons'),
 ]
@@ -54,22 +54,22 @@ datas += collect_data_files('ckcc')
 
 # We don't put these files in to actually include them in the script but to make the Analysis method scan them for imports
 a = Analysis([home+'run_electrum',
-              home+'electrum_mue/gui/qt/main_window.py',
-              home+'electrum_mue/gui/text.py',
-              home+'electrum_mue/util.py',
-              home+'electrum_mue/wallet.py',
-              home+'electrum_mue/simple_config.py',
-              home+'electrum_mue/bitcoin.py',
-              home+'electrum_mue/dnssec.py',
-              home+'electrum_mue/commands.py',
-              home+'electrum_mue/plugins/cosigner_pool/qt.py',
-              home+'electrum_mue/plugins/email_requests/qt.py',
-              home+'electrum_mue/plugins/trezor/qt.py',
-              home+'electrum_mue/plugins/safe_t/client.py',
-              home+'electrum_mue/plugins/safe_t/qt.py',
-              home+'electrum_mue/plugins/keepkey/qt.py',
-              home+'electrum_mue/plugins/ledger/qt.py',
-              home+'electrum_mue/plugins/coldcard/qt.py',
+              home+'electrum_audax/gui/qt/main_window.py',
+              home+'electrum_audax/gui/text.py',
+              home+'electrum_audax/util.py',
+              home+'electrum_audax/wallet.py',
+              home+'electrum_audax/simple_config.py',
+              home+'electrum_audax/bitcoin.py',
+              home+'electrum_audax/dnssec.py',
+              home+'electrum_audax/commands.py',
+              home+'electrum_audax/plugins/cosigner_pool/qt.py',
+              home+'electrum_audax/plugins/email_requests/qt.py',
+              home+'electrum_audax/plugins/trezor/qt.py',
+              home+'electrum_audax/plugins/safe_t/client.py',
+              home+'electrum_audax/plugins/safe_t/qt.py',
+              home+'electrum_audax/plugins/keepkey/qt.py',
+              home+'electrum_audax/plugins/ledger/qt.py',
+              home+'electrum_audax/plugins/coldcard/qt.py',
               #home+'packages/requests/utils.py'
               ],
              binaries=binaries,
@@ -117,24 +117,24 @@ exe_standalone = EXE(
     a.scripts,
     a.binaries,
     a.datas,
-    name=os.path.join('build\\pyi.win32\\electrum-mue', cmdline_name + ".exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-audax', cmdline_name + ".exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_mue/gui/icons/electrum.ico',
+    icon=home+'electrum_audax/gui/icons/electrum.ico',
     console=False)
-    # console=True makes an annoying black box pop up, but it does make Electrum-MUE output command line commands, with this turned off no output will be given but commands can still be used
+    # console=True makes an annoying black box pop up, but it does make Electrum-AUDAX output command line commands, with this turned off no output will be given but commands can still be used
 
 exe_portable = EXE(
     pyz,
     a.scripts,
     a.binaries,
     a.datas + [ ('is_portable', 'README.md', 'DATA' ) ],
-    name=os.path.join('build\\pyi.win32\\electrum-mue', cmdline_name + "-portable.exe"),
+    name=os.path.join('build\\pyi.win32\\electrum-audax', cmdline_name + "-portable.exe"),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_mue/gui/icons/electrum.ico',
+    icon=home+'electrum_audax/gui/icons/electrum.ico',
     console=False)
 
 #####
@@ -144,11 +144,11 @@ exe_dependent = EXE(
     pyz,
     a.scripts,
     exclude_binaries=True,
-    name=os.path.join('build\\pyi.win32\\electrum-mue', cmdline_name),
+    name=os.path.join('build\\pyi.win32\\electrum-audax', cmdline_name),
     debug=False,
     strip=None,
     upx=False,
-    icon=home+'electrum_mue/gui/icons/electrum.ico',
+    icon=home+'electrum_audax/gui/icons/electrum.ico',
     console=False)
 
 coll = COLLECT(
@@ -159,6 +159,6 @@ coll = COLLECT(
     strip=None,
     upx=True,
     debug=False,
-    icon=home+'electrum_mue/gui/icons/electrum.ico',
+    icon=home+'electrum_audax/gui/icons/electrum.ico',
     console=False,
-    name=os.path.join('dist', 'electrum-mue'))
+    name=os.path.join('dist', 'electrum-audax'))

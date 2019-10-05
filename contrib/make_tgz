@@ -5,7 +5,7 @@ set -e
 CONTRIB="$(dirname "$(readlink -e "$0")")"
 ROOT_FOLDER="$CONTRIB"/..
 PACKAGES="$ROOT_FOLDER"/packages/
-LOCALE="$ROOT_FOLDER"/electrum_mue/locale/
+LOCALE="$ROOT_FOLDER"/electrum_audax/locale/
 
 if [ ! -d "$LOCALE" ]; then
   echo "Run make_locale first!"
@@ -25,7 +25,7 @@ fi
     echo "<<<"
 
     # we could build the kivy atlas potentially?
-    #(cd electrum_mue/gui/kivy/; make theming) || echo "building kivy atlas failed! skipping."
+    #(cd electrum_audax/gui/kivy/; make theming) || echo "building kivy atlas failed! skipping."
 
     python3 setup.py --quiet sdist --format=zip,gztar
 )

@@ -19,7 +19,7 @@ folder.
 2. Build image
 
    ```
-   $ sudo docker build -t electrum-mue-wine-builder-img contrib/build-wine
+   $ sudo docker build -t electrum-audax-wine-builder-img contrib/build-wine
    ```
 
    Note: see [this](https://stackoverflow.com/a/40516974/7499128) if having dns problems
@@ -34,8 +34,8 @@ folder.
        rm -rf $FRESH_CLONE && \
        mkdir -p $FRESH_CLONE && \
        cd $FRESH_CLONE  && \
-       git clone https://github.com/muecoin/electrum-mue.git && \
-       cd electrum-mue
+       git clone https://github.com/theaudaxproject/electrum-audax.git && \
+       cd electrum-audax
    ```
 
    And then build from this directory:
@@ -43,11 +43,11 @@ folder.
    ```
    $ git checkout $REV
    $ sudo docker run -it \
-       --name electrum-mue-wine-builder-cont \
-       -v $PWD:/opt/wine64/drive_c/electrum-mue \
+       --name electrum-audax-wine-builder-cont \
+       -v $PWD:/opt/wine64/drive_c/electrum-audax \
        --rm \
-       --workdir /opt/wine64/drive_c/electrum-mue/contrib/build-wine \
-       electrum-mue-wine-builder-img \
+       --workdir /opt/wine64/drive_c/electrum-audax/contrib/build-wine \
+       electrum-audax-wine-builder-img \
        ./build.sh
    ```
 
@@ -57,7 +57,7 @@ Note: the `setup` binary (NSIS installer) is not deterministic yet.
 
 # Code Signing
 
-Electrum-MUE Windows builds are signed with a Microsoft Authenticode™ code signing
+Electrum-AUDAX Windows builds are signed with a Microsoft Authenticode™ code signing
 certificate in addition to the GPG-based signatures.
 
 The advantage of using Authenticode is that Electrum users won't receive a

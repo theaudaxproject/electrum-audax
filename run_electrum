@@ -41,12 +41,12 @@ warnings.simplefilter('default', DeprecationWarning)
 script_dir = os.path.dirname(os.path.realpath(__file__))
 is_bundle = getattr(sys, 'frozen', False)
 is_local = not is_bundle and os.path.exists(
-    os.path.join(script_dir, "electrum-mue.desktop"))
+    os.path.join(script_dir, "electrum-audax.desktop"))
 is_android = 'ANDROID_DATA' in os.environ
 
 # move this back to gui/kivy/__init.py once plugins are moved
 os.environ['KIVY_DATA_DIR'] = os.path.abspath(
-    os.path.dirname(__file__)) + '/electrum_mue/gui/kivy/data/'
+    os.path.dirname(__file__)) + '/electrum_audax/gui/kivy/data/'
 
 if is_local or is_android:
     sys.path.insert(0, os.path.join(script_dir, 'packages'))
@@ -80,17 +80,17 @@ if not is_android:
     check_imports()
 
 
-from electrum_mue.logging import get_logger, configure_logging
-from electrum_mue import util
-from electrum_mue import constants
-from electrum_mue import SimpleConfig
-from electrum_mue.wallet import Wallet
-from electrum_mue.storage import WalletStorage, get_derivation_used_for_hw_device_encryption
-from electrum_mue.util import print_msg, print_stderr, json_encode, json_decode, UserCancelled
-from electrum_mue.util import InvalidPassword
-from electrum_mue.commands import get_parser, known_commands, Commands, config_variables
-from electrum_mue import daemon
-from electrum_mue import keystore
+from electrum_audax.logging import get_logger, configure_logging
+from electrum_audax import util
+from electrum_audax import constants
+from electrum_audax import SimpleConfig
+from electrum_audax.wallet import Wallet
+from electrum_audax.storage import WalletStorage, get_derivation_used_for_hw_device_encryption
+from electrum_audax.util import print_msg, print_stderr, json_encode, json_decode, UserCancelled
+from electrum_audax.util import InvalidPassword
+from electrum_audax.commands import get_parser, known_commands, Commands, config_variables
+from electrum_audax import daemon
+from electrum_audax import keystore
 
 _logger = get_logger(__name__)
 
@@ -113,7 +113,7 @@ def init_daemon(config_options):
     storage = WalletStorage(config.get_wallet_path())
     if not storage.file_exists():
         print_msg("Error: Wallet file not found.")
-        print_msg("Type 'electrum-mue create' to create a new wallet, or provide a path to a wallet with the -w option")
+        print_msg("Type 'electrum-audax create' to create a new wallet, or provide a path to a wallet with the -w option")
         sys.exit(0)
     if storage.is_encrypted():
         if storage.is_encrypted_with_hw_device():
@@ -151,7 +151,7 @@ def init_cmdline(config_options, server):
 
     if cmd.requires_wallet and not storage.file_exists():
         print_msg("Error: Wallet file not found.")
-        print_msg("Type 'electrum-mue create' to create a new wallet, or provide a path to a wallet with the -w option")
+        print_msg("Type 'electrum-audax create' to create a new wallet, or provide a path to a wallet with the -w option")
         sys.exit(0)
 
     # important warning
@@ -268,7 +268,7 @@ def run_offline_command(config, config_options, plugins):
 
 
 def init_plugins(config, gui_name):
-    from electrum_mue.plugin import Plugins
+    from electrum_audax.plugin import Plugins
     return Plugins(config, gui_name)
 
 
@@ -336,7 +336,7 @@ if __name__ == '__main__':
 
     if config_options.get('portable'):
         config_options['electrum_path'] = os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), 'electrum-mue_data')
+            os.path.dirname(os.path.realpath(__file__)), 'electrum-audax_data')
 
     if not config_options.get('verbosity'):
         warnings.simplefilter('ignore', DeprecationWarning)
@@ -344,7 +344,7 @@ if __name__ == '__main__':
     # check uri
     uri = config_options.get('url')
     if uri:
-        if not uri.startswith('monetaryunit:'):
+        if not uri.startswith('audax:'):
             print_stderr('unknown command:', uri)
             sys.exit(1)
         config_options['url'] = uri
@@ -396,7 +396,7 @@ if __name__ == '__main__':
                 init_plugins(config, 'cmdline')
                 d = daemon.Daemon(config, fd)
                 if config.get('websocket_server'):
-                    from electrum_mue import websockets
+                    from electrum_audax import websockets
                     websockets.WebSocketServer(config, d.network)
                 if config.get('requests_dir'):
                     path = os.path.join(config.get('requests_dir'), 'index.html')
@@ -424,7 +424,7 @@ if __name__ == '__main__':
         else:
             cmd = known_commands[cmdname]
             if cmd.requires_network:
-                print_msg("Daemon not running; try 'electrum-mue daemon start'")
+                print_msg("Daemon not running; try 'electrum-audax daemon start'")
                 sys.exit(1)
             else:
                 plugins = init_plugins(config, 'cmdline')

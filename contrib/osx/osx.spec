@@ -4,8 +4,8 @@ from PyInstaller.utils.hooks import collect_data_files, collect_submodules, coll
 
 import sys, os
 
-PACKAGE='Electrum-MUE'
-PYPKG='electrum_mue'
+PACKAGE='Electrum-AUDAX'
+PYPKG='electrum_audax'
 MAIN_SCRIPT='run_electrum'
 ICONS_FILE=PYPKG + '/gui/icons/electrum.icns'
 APP_SIGN = os.environ.get('APP_SIGN', '')
@@ -97,22 +97,22 @@ binaries += [b for b in collect_dynamic_libs('PyQt5') if 'macstyle' in b[0]]
 
 # We don't put these files in to actually include them in the script but to make the Analysis method scan them for imports
 a = Analysis([electrum+ MAIN_SCRIPT,
-              electrum+'electrum_mue/gui/qt/main_window.py',
-              electrum+'electrum_mue/gui/text.py',
-              electrum+'electrum_mue/util.py',
-              electrum+'electrum_mue/wallet.py',
-              electrum+'electrum_mue/simple_config.py',
-              electrum+'electrum_mue/bitcoin.py',
-              electrum+'electrum_mue/dnssec.py',
-              electrum+'electrum_mue/commands.py',
-              electrum+'electrum_mue/plugins/cosigner_pool/qt.py',
-              electrum+'electrum_mue/plugins/email_requests/qt.py',
-              electrum+'electrum_mue/plugins/trezor/qt.py',
-              electrum+'electrum_mue/plugins/safe_t/client.py',
-              electrum+'electrum_mue/plugins/safe_t/qt.py',
-              electrum+'electrum_mue/plugins/keepkey/qt.py',
-              electrum+'electrum_mue/plugins/ledger/qt.py',
-              electrum+'electrum_mue/plugins/coldcard/qt.py',
+              electrum+'electrum_audax/gui/qt/main_window.py',
+              electrum+'electrum_audax/gui/text.py',
+              electrum+'electrum_audax/util.py',
+              electrum+'electrum_audax/wallet.py',
+              electrum+'electrum_audax/simple_config.py',
+              electrum+'electrum_audax/bitcoin.py',
+              electrum+'electrum_audax/dnssec.py',
+              electrum+'electrum_audax/commands.py',
+              electrum+'electrum_audax/plugins/cosigner_pool/qt.py',
+              electrum+'electrum_audax/plugins/email_requests/qt.py',
+              electrum+'electrum_audax/plugins/trezor/qt.py',
+              electrum+'electrum_audax/plugins/safe_t/client.py',
+              electrum+'electrum_audax/plugins/safe_t/qt.py',
+              electrum+'electrum_audax/plugins/keepkey/qt.py',
+              electrum+'electrum_audax/plugins/ledger/qt.py',
+              electrum+'electrum_audax/plugins/coldcard/qt.py',
               ],
              binaries=binaries,
              datas=datas,

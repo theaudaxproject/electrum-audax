@@ -37,9 +37,9 @@ jobs:
       services:
         - docker
       install:
-        - sudo docker build --no-cache -t electrum-mue-wine-builder-img ./contrib/build-wine/
+        - sudo docker build --no-cache -t electrum-audax-wine-builder-img ./contrib/build-wine/
       script:
-        - sudo docker run --name electrum-mue-wine-builder-cont -v $PWD:/opt/wine64/drive_c/electrum-mue --rm --workdir /opt/wine64/drive_c/electrum/contrib/build-wine electrum-mue-wine-builder-img ./build.sh
+        - sudo docker run --name electrum-audax-wine-builder-cont -v $PWD:/opt/wine64/drive_c/electrum-audax --rm --workdir /opt/wine64/drive_c/electrum/contrib/build-wine electrum-audax-wine-builder-img ./build.sh
       after_success: true
     - name: "Android build"
       language: python
@@ -81,9 +81,9 @@ jobs:
       services:
         - docker
       install:
-        - sudo docker build --no-cache -t electrum-mue-appimage-builder-img ./contrib/build-linux/appimage/
+        - sudo docker build --no-cache -t electrum-audax-appimage-builder-img ./contrib/build-linux/appimage/
       script:
-        - sudo docker run --name electrum-mue-appimage-builder-cont -v $PWD:/opt/electrum --rm --workdir /opt/electrum/contrib/build-linux/appimage electrum-mue-appimage-builder-img ./build.sh
+        - sudo docker run --name electrum-audax-appimage-builder-cont -v $PWD:/opt/electrum --rm --workdir /opt/electrum/contrib/build-linux/appimage electrum-audax-appimage-builder-img ./build.sh
       after_success: true
     - stage: release check
       install:

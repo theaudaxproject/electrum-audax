@@ -6,9 +6,9 @@
 ;--------------------------------
 ;Variables
 
-  !define PRODUCT_NAME "Electrum-MUE"
-  !define PRODUCT_WEB_SITE "https://github.com/muecoin/electrum-mue"
-  !define PRODUCT_PUBLISHER "MonetaryUnit"
+  !define PRODUCT_NAME "Electrum-AUDAX"
+  !define PRODUCT_WEB_SITE "https://github.com/theaudaxproject/electrum-audax"
+  !define PRODUCT_PUBLISHER "Audax"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
 ;--------------------------------
@@ -16,7 +16,7 @@
 
   ;Name and file
   Name "${PRODUCT_NAME}"
-  OutFile "dist/electrum-mue-setup.exe"
+  OutFile "dist/electrum-audax-setup.exe"
 
   ;Default installation folder
   InstallDir "$PROGRAMFILES\${PRODUCT_NAME}"
@@ -72,7 +72,7 @@
   !define MUI_ABORTWARNING
   !define MUI_ABORTWARNING_TEXT "Are you sure you wish to abort the installation of ${PRODUCT_NAME}?"
 
-  !define MUI_ICON "c:\electrum-mue\electrum_mue\gui\icons\electrum.ico"
+  !define MUI_ICON "c:\electrum-audax\electrum_audax\gui\icons\electrum.ico"
 
 ;--------------------------------
 ;Pages
@@ -111,7 +111,7 @@ Section
 
   ;Files to pack into the installer
   File /r "dist\electrum\*.*"
-  File "c:\electrum-mue\electrum_mue\gui\icons\electrum.ico"
+  File "c:\electrum-audax\electrum_audax\gui\icons\electrum.ico"
 
   ;Store installation folder
   WriteRegStr HKCU "Software\${PRODUCT_NAME}" "" $INSTDIR
@@ -122,21 +122,21 @@ Section
 
   ;Create desktop shortcut
   DetailPrint "Creating desktop shortcut..."
-  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-mue-${PRODUCT_VERSION}.exe" ""
+  CreateShortCut "$DESKTOP\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-audax-${PRODUCT_VERSION}.exe" ""
 
   ;Create start-menu items
   DetailPrint "Creating start-menu items..."
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\Uninstall.lnk" "$INSTDIR\Uninstall.exe" "" "$INSTDIR\Uninstall.exe" 0
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-mue-${PRODUCT_VERSION}.exe" "" "$INSTDIR\electrum-mue-${PRODUCT_VERSION}.exe" 0
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\electrum-mue-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\electrum-mue-${PRODUCT_VERSION}.exe" 0
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME}.lnk" "$INSTDIR\electrum-audax-${PRODUCT_VERSION}.exe" "" "$INSTDIR\electrum-audax-${PRODUCT_VERSION}.exe" 0
+  CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\${PRODUCT_NAME} Testnet.lnk" "$INSTDIR\electrum-audax-${PRODUCT_VERSION}.exe" "--testnet" "$INSTDIR\electrum-audax-${PRODUCT_VERSION}.exe" 0
 
 
-  ;Links monetaryunit: URI's to Electrum
-  WriteRegStr HKCU "Software\Classes\monetaryunit" "" "URL:monetaryunit Protocol"
-  WriteRegStr HKCU "Software\Classes\monetaryunit" "URL Protocol" ""
-  WriteRegStr HKCU "Software\Classes\monetaryunit" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
-  WriteRegStr HKCU "Software\Classes\monetaryunit\shell\open\command" "" "$\"$INSTDIR\electrum-mue-${PRODUCT_VERSION}.exe$\" $\"%1$\""
+  ;Links audax: URI's to Electrum
+  WriteRegStr HKCU "Software\Classes\audax" "" "URL:audax Protocol"
+  WriteRegStr HKCU "Software\Classes\audax" "URL Protocol" ""
+  WriteRegStr HKCU "Software\Classes\audax" "DefaultIcon" "$\"$INSTDIR\electrum.ico, 0$\""
+  WriteRegStr HKCU "Software\Classes\audax\shell\open\command" "" "$\"$INSTDIR\electrum-audax-${PRODUCT_VERSION}.exe$\" $\"%1$\""
 
   ;Adds an uninstaller possibility to Windows Uninstall or change a program section
   WriteRegStr HKCU "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
@@ -167,7 +167,7 @@ Section "Uninstall"
   Delete "$SMPROGRAMS\${PRODUCT_NAME}\*.*"
   RMDir  "$SMPROGRAMS\${PRODUCT_NAME}"
 
-  DeleteRegKey HKCU "Software\Classes\monetaryunit"
+  DeleteRegKey HKCU "Software\Classes\audax"
   DeleteRegKey HKCU "Software\${PRODUCT_NAME}"
   DeleteRegKey HKCU "${PRODUCT_UNINST_KEY}"
 SectionEnd

@@ -1,4 +1,4 @@
-AppImage binary for Electrum-MUE
+AppImage binary for Electrum-AUDAX
 =================================
 
 This assumes an Ubuntu host, but it should not be too hard to adapt to another
@@ -17,18 +17,18 @@ folder.
 2. Build image
 
     ```
-    $ sudo docker build --no-cache -t electrum-mue-appimage-builder-img contrib/build-linux/appimage
+    $ sudo docker build --no-cache -t electrum-audax-appimage-builder-img contrib/build-linux/appimage
     ```
 
 3. Build binary
 
     ```
     $ sudo docker run -it \
-        --name electrum-mue-appimage-builder-cont \
-        -v $PWD:/opt/electrum_mue \
+        --name electrum-audax-appimage-builder-cont \
+        -v $PWD:/opt/electrum_audax \
         --rm \
-        --workdir /opt/electrum_mue/contrib/build-linux/appimage \
-        electrum-mue-appimage-builder-img \
+        --workdir /opt/electrum_audax/contrib/build-linux/appimage \
+        electrum-audax-appimage-builder-img \
         ./build.sh
     ```
 
@@ -38,4 +38,4 @@ folder.
 ## FAQ
 
 ### How can I see what is included in the AppImage?
-Execute the binary as follows: `./electrum-mue*.AppImage --appimage-extract`
+Execute the binary as follows: `./electrum-audax*.AppImage --appimage-extract`

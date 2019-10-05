@@ -1,6 +1,6 @@
 include LICENCE RELEASE-NOTES AUTHORS
 include README.rst
-include electrum-mue.desktop
+include electrum-audax.desktop
 include *.py
 include run_electrum
 include contrib/requirements/requirements.txt
@@ -8,8 +8,8 @@ include contrib/requirements/requirements-hw.txt
 recursive-include packages *.py
 recursive-include packages cacert.pem
 
-graft electrum_mue
-prune electrum_mue/tests
+graft electrum_audax
+prune electrum_audax/tests
 
 global-exclude __pycache__
 global-exclude *.py[co~]

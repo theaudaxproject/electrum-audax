@@ -1,23 +1,23 @@
-name: electrum-mue
+name: electrum-audax
 version: master
-summary: MonetaryUnit thin client
+summary: Audax thin client
 description: |
-  Lightweight MonetaryUnit client
+  Lightweight Audax client
 
 grade: devel # must be 'stable' to release into candidate/stable channels
 confinement: strict
 
 apps:
-  electrum-mue:
-    command: desktop-launch electrum-mue
+  electrum-audax:
+    command: desktop-launch electrum-audax
     plugs: [network, network-bind, x11, unity7]
 
 parts:
-  electrum-mue:
+  electrum-audax:
     source: .
     plugin: python
     python-version: python3
     stage-packages: [python3-pyqt5]
     build-packages: [pyqt5-dev-tools]
-    install: pyrcc5 icons.qrc -o $SNAPCRAFT_PART_INSTALL/lib/python3.5/site-packages/electrum_mue/gui/qt/icons_rc.py
+    install: pyrcc5 icons.qrc -o $SNAPCRAFT_PART_INSTALL/lib/python3.5/site-packages/electrum_audax/gui/qt/icons_rc.py
     after: [desktop-qt5]

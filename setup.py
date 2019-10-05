@@ -28,7 +28,7 @@ with open('contrib/requirements/requirements-hw.txt') as f:
 
 # load version.py; needlessly complicated alternative to "imp.load_source":
 version_spec = importlib.util.spec_from_file_location(
-    'version', 'electrum_mue/version.py')
+    'version', 'electrum_audax/version.py')
 version_module = version = importlib.util.module_from_spec(version_spec)
 version_spec.loader.exec_module(version_module)
 
@@ -49,9 +49,9 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
-        (os.path.join(usr_share, 'applications/'), ['electrum-mue.desktop']),
+        (os.path.join(usr_share, 'applications/'), ['electrum-audax.desktop']),
         (os.path.join(usr_share, icons_dirname), [
-         'electrum_mue/gui/icons/electrum.png']),
+         'electrum_audax/gui/icons/electrum.png']),
     ]
 
 extras_require = {
@@ -64,23 +64,23 @@ extras_require['full'] = [pkg for sublist in list(
 
 
 setup(
-    name="Electrum-MUE",
+    name="Electrum-AUDAX",
     version=version.ELECTRUM_VERSION,
     python_requires='>={}'.format(MIN_PYTHON_VERSION),
     install_requires=requirements,
     extras_require=extras_require,
     packages=[
-        'electrum_mue',
-        'electrum_mue.gui',
-        'electrum_mue.gui.qt',
-        'electrum_mue.plugins',
-    ] + [('electrum_mue.plugins.'+pkg) for pkg in find_packages('electrum_mue/plugins')],
+        'electrum_audax',
+        'electrum_audax.gui',
+        'electrum_audax.gui.qt',
+        'electrum_audax.plugins',
+    ] + [('electrum_audax.plugins.'+pkg) for pkg in find_packages('electrum_audax/plugins')],
     package_dir={
-        'electrum_mue': 'electrum_mue'
+        'electrum_audax': 'electrum_audax'
     },
     package_data={
         '': ['*.txt', '*.json', '*.ttf', '*.otf'],
-        'electrum_mue': [
+        'electrum_audax': [
             'wordlist/*.txt',
             'locale/*/LC_MESSAGES/electrum.mo',
         ],
@@ -88,12 +88,12 @@ setup(
             'icons/*',
         ],
     },
-    scripts=['electrum_mue/electrum-mue'],
+    scripts=['electrum_audax/electrum-audax'],
     data_files=data_files,
-    description="Lightweight MonetaryUnit Wallet",
+    description="Lightweight Audax Wallet",
     author="Thomas Voegtlin",
     author_email="thomasv@electrum.org",
     license="MIT Licence",
-    url="https://electrum.monetaryunit.org",
-    long_description="""Lightweight MonetaryUnit Wallet""",
+    url="https://electrum.audax.org",
+    long_description="""Lightweight Audax Wallet""",
 )

@@ -1,0 +1,22 @@
+# If you want Electrum-AUDAX to appear in a Linux app launcher ("start menu"), install this by doing:
+# sudo desktop-file-install electrum-audax.desktop
+
+[Desktop Entry]
+Comment=Lightweight Audax Client
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-audax %u"
+GenericName[en_US]=Audax Wallet
+GenericName=Audax Wallet
+Icon=electrum-audax
+Name[en_US]=Electrum Audax Wallet
+Name=Electrum Audax Wallet
+Categories=Finance;Network;
+StartupNotify=true
+StartupWMClass=electrum-audax
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/audax;
+Actions=Testnet;
+
+[Desktop Action Testnet]
+Exec=sh -c "PATH=\"\\$HOME/.local/bin:\\$PATH\"; electrum-audax --testnet %u"
+Name=Testnet mode

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NAME_ROOT=electrum-mue
+NAME_ROOT=electrum-audax
 
 # These settings probably don't need any change
 export WINEPREFIX=/opt/wine64
@@ -18,7 +18,7 @@ set -e
 mkdir -p tmp
 cd tmp
 
-pushd $WINEPREFIX/drive_c/electrum-mue
+pushd $WINEPREFIX/drive_c/electrum-audax
 
 # Load electrum-icons and electrum-locale for this release
 git submodule init
@@ -33,7 +33,7 @@ if ! which msgfmt > /dev/null 2>&1; then
     exit 1
 fi
 for i in ./locale/*; do
-    dir=$WINEPREFIX/drive_c/electrum-mue/electrum_mue/$i/LC_MESSAGES
+    dir=$WINEPREFIX/drive_c/electrum-audax/electrum_audax/$i/LC_MESSAGES
     mkdir -p $dir
     msgfmt --output-file=$dir/electrum.mo $i/electrum.po || true
 done
@@ -42,14 +42,14 @@ popd
 find -exec touch -d '2000-11-11T11:11:11+00:00' {} +
 popd
 
-cp $WINEPREFIX/drive_c/electrum-mue/LICENCE .
+cp $WINEPREFIX/drive_c/electrum-audax/LICENCE .
 
 # Install frozen dependencies
 $PYTHON -m pip install -r ../../deterministic-build/requirements.txt
 
 $PYTHON -m pip install -r ../../deterministic-build/requirements-hw.txt
 
-pushd $WINEPREFIX/drive_c/electrum-mue
+pushd $WINEPREFIX/drive_c/electrum-audax
 $PYTHON -m pip install .
 popd
 
@@ -70,7 +70,7 @@ popd
 wine "$WINEPREFIX/drive_c/Program Files (x86)/NSIS/makensis.exe" /DPRODUCT_VERSION=$VERSION electrum.nsi
 
 cd dist
-mv electrum-mue-setup.exe $NAME_ROOT-$VERSION-setup.exe
+mv electrum-audax-setup.exe $NAME_ROOT-$VERSION-setup.exe
 cd ..
 
 echo "Done."

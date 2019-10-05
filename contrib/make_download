@@ -3,7 +3,7 @@ import re
 import os
 import sys
 
-from electrum_mue.version import ELECTRUM_VERSION, APK_VERSION
+from electrum_audax.version import ELECTRUM_VERSION, APK_VERSION
 print("version", ELECTRUM_VERSION)
 
 dirname = sys.argv[1]
@@ -23,18 +23,18 @@ string = string.replace("##VERSION_ANDROID##", version_android)
 string = string.replace("##VERSION_APK##", APK_VERSION)
 
 files = {
-    'tgz': "Electrum-MUE-%s.tar.gz" % version,
-    'appimage': "electrum-mue-%s-x86_64.AppImage" % version,
-    'zip': "Electrum-MUE-%s.zip" % version,
-    'mac': "electrum-mue-%s.dmg" % version_mac,
-    'win': "electrum-mue-%s.exe" % version_win,
-    'win_setup': "electrum-mue-%s-setup.exe" % version_win,
-    'win_portable': "electrum-mue-%s-portable.exe" % version_win,
+    'tgz': "Electrum-AUDAX-%s.tar.gz" % version,
+    'appimage': "electrum-audax-%s-x86_64.AppImage" % version,
+    'zip': "Electrum-AUDAX-%s.zip" % version,
+    'mac': "electrum-audax-%s.dmg" % version_mac,
+    'win': "electrum-audax-%s.exe" % version_win,
+    'win_setup': "electrum-audax-%s-setup.exe" % version_win,
+    'win_portable': "electrum-audax-%s-portable.exe" % version_win,
 }
 
 for k, n in files.items():
     path = "dist/%s" % n
-    link = "https://electrum.monetaryunit.org/%s/%s" % (version, n)
+    link = "https://electrum.audax.org/%s/%s" % (version, n)
     if not os.path.exists(path):
         os.system("wget -q %s -O %s" % (link, path))
     if not os.path.getsize(path):

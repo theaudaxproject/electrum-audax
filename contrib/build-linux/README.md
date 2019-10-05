@@ -7,7 +7,7 @@ Source tarballs
     contrib/make_locale
     ```
 
-2. Prepare python dependencies used by Electrum-MUE.
+2. Prepare python dependencies used by Electrum-AUDAX.
 
     ```
     contrib/make_packages
