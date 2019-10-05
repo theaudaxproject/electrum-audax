@@ -56,7 +56,7 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
 
 extras_require = {
     'hardware': requirements_hw,
-    'fast': ['pycryptodomex', 'quark_hash'],
+    'fast': ['pycryptodomex'],
     'gui': ['pyqt5'],
 }
 extras_require['full'] = [pkg for sublist in list(

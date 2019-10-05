@@ -28,8 +28,6 @@ hiddenimports += ['PyQt5.QtPrintSupport']  # needed by Revealer
 # release a new version that includes https://github.com/archos-safe-t/python-safet/commit/b1eab3dba4c04fdfc1fcf17b66662c28c5f2380e
 hiddenimports.remove('safetlib.qt.pinmatrix')
 
-hiddenimports += ['quark_hash']
-
 # Add libusb binary
 binaries = [(PYHOME+"/libusb-1.0.dll", ".")]
 
@@ -44,7 +42,7 @@ datas = [
     (home+'electrum_audax/locale', 'electrum_audax/locale'),
     (home+'electrum_audax/plugins', 'electrum_audax/plugins'),
     ('C:\\Program Files (x86)\\ZBar\\bin\\', '.'),
-    (home+'electrum/gui/icons', 'electrum/gui/icons'),
+    (home+'electrum_audax/gui/icons', 'electrum_audax/gui/icons'),
 ]
 datas += collect_data_files('trezorlib')
 datas += collect_data_files('safetlib')

@@ -54,5 +54,3 @@ setuptools==41.0.1 \
 wheel==0.33.1 \
     --hash=sha256:66a8fd76f28977bb664b098372daef2b27f60dc4d1688cfab7b37a09448f0e9d \
     --hash=sha256:8eb4a788b3aec8abf5ff68d4165441bc57420c9f64ca5f471f58c3969fe08668
-quark_hash==1.0 \
-    --hash=sha256:eb1de478ff1acf810f50d3e227532a937252006eb124afb3da248baaa559b7d4

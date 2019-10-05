@@ -4,7 +4,7 @@
 set -e
 
 build_dll() {
-    #sudo apt-get install -y mingw-w64
+    sudo apt-get install -y mingw-w64
     export SOURCE_DATE_EPOCH=1530212462
     ./autogen.sh
     echo "LDFLAGS = -no-undefined" >> Makefile.am
@@ -26,12 +26,7 @@ if [ ! -d secp256k1 ]; then
     cd secp256k1;
 else
     cd secp256k1
-    git pull
 fi
-
-LIBSECP_VERSION="b408c6a8b287003d1ade5709e6f7bc3c7f1d5be7"
-git reset --hard "$LIBSECP_VERSION"
-git clean -f -x -q
 
 build_dll i686-w64-mingw32  # 64-bit would be: x86_64-w64-mingw32
 mv .libs/libsecp256k1-0.dll libsecp256k1.dll
