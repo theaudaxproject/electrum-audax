@@ -1,4 +1,4 @@
-Electrum AUDAX - Lightweight Audax client
+Electrum-AUDAX - Lightweight Electrum client
 ===========================================
 
 Electrum-AUDAX is a port of Electrum, the Bitcoin wallet, to Audax.
