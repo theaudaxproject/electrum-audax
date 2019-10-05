@@ -1,37 +1,6 @@
 Electrum-AUDAX - Lightweight Electrum client
 ===========================================
 
-Electrum-AUDAX is a port of Electrum, the Bitcoin wallet, to Audax.
-
-::
-
-  Licence: MIT Licence
-  Original Author: Thomas Voegtlin
-  Author: Thomas Voegtlin
-  Language: Python (>= 3.6)
-  Homepage: https://electrum.audax.org/
-
-
-Getting started
-===============
-
-Electrum-AUDAX is a pure python application. If you want to use the
-Qt interface, install the Qt dependencies::
-
-    sudo apt-get install python3-pyqt5 - Lightweight Audax client
-===========================================
-
-Electrum-AUDAX is a port of Electrum, the Bitcoin wallet, to Audax.
-
-::
-
-  Licence: MIT Licence
-  Original Author: Thomas Voegtlin
-  Author: Thomas Voegtlin
-  Language: Python (>= 3.6)
-  Homepage: https://electrum.audax.org/
-
-
 Getting started
 ===============
 
