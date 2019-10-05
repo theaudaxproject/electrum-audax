@@ -4,13 +4,13 @@ Source tarballs
 1. Build locale files
 
     ```
-    contrib/make_locale
+    ./contrib/make_locale
     ```
 
 2. Prepare python dependencies used by Electrum-AUDAX.
 
     ```
-    contrib/make_packages
+    sudo ./contrib/make_packages
     ```
 
 3. Create source tarball.
