@@ -4,7 +4,7 @@
 set -e
 
 build_dll() {
-    sudo apt-get install -y mingw-w64
+    apt-get install -y mingw-w64
     export SOURCE_DATE_EPOCH=1530212462
     ./autogen.sh
     echo "LDFLAGS = -no-undefined" >> Makefile.am
