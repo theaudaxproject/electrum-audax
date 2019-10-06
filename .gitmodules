@@ -1,3 +1,6 @@
 [submodule "contrib/CalinsQRReader"]
 	path = contrib/osx/CalinsQRReader
 	url = https://github.com/spesmilo/CalinsQRReader
+[submodule "contrib/deterministic-build/electrumlocale"]
+	path = contrib/deterministic-build/electrumlocale
+	url = https://github.com/theaudaxproject/electrum-locale
