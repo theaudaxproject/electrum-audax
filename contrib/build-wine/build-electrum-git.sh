@@ -12,17 +12,20 @@ PYTHON="wine $PYHOME/python.exe -OO -B"
 
 
 # Let's begin!
+echo "Lets beginxxxx"
 cd `dirname $0`
 set -e
 
 mkdir -p tmp
 cd tmp
-
+echo "folder tmp created xxxx"
 pushd $WINEPREFIX/drive_c/electrum-audax
 
 # Load electrum-icons and electrum-locale for this release
+echo "Loading electrum-icons and electrum-localexxxx"
 git submodule init
 git submodule update
+echo "End loading electrum-iconsxxxx"
 
 VERSION=`git describe --tags --dirty --always`
 echo "Last commit: $VERSION"
