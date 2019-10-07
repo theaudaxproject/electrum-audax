@@ -22,7 +22,7 @@ from .logging import Logger
 
 
 DEFAULT_ENABLED = False
-DEFAULT_CURRENCY = "EUR"
+DEFAULT_CURRENCY = "USD"
 DEFAULT_EXCHANGE = "CoinGecko"  # default exchange should ideally provide historical rates
 
 
@@ -310,9 +310,11 @@ class CoinDesk(ExchangeBase):
 class CoinGecko(ExchangeBase):
 
     async def get_rates(self, ccy):
-        json = await self.get_json('api.coingecko.com', '/api/v3/exchange_rates')
-        return dict([(ccy.upper(), Decimal(d['value']))
-                     for ccy, d in json['rates'].items()])
+        json = await self.get_json('api.coingecko.com',
+                                   '/api/v3/coins/audax')
+        r = dict([(ccy.upper(), Decimal(d))
+                  for ccy, d in json['market_data']['current_price'].items()])
+        return r
 
     def history_ccys(self):
         # CoinGecko seems to have historical data for all ccys it supports
