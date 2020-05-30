@@ -168,6 +168,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         self.send_tab = self.create_send_tab()
         self.receive_tab = self.create_receive_tab()
         self.addresses_tab = self.create_addresses_tab()
+        self.masternode_tab = self.create_masternode_tab()
         self.utxo_tab = self.create_utxo_tab()
         self.console_tab = self.create_console_tab()
         self.contacts_tab = self.create_contacts_tab()
@@ -175,6 +176,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
         tabs.addTab(self.create_history_tab(), read_QIcon("tab_history.png"), _('History'))
         tabs.addTab(self.send_tab, read_QIcon("tab_send.png"), _('Send'))
         tabs.addTab(self.receive_tab, read_QIcon("tab_receive.png"), _('Receive'))
+        tabs.addTab(self.masternode_tab, QIcon(":icons/tab_masternodes.png"), _('Masternodes'))
 
         def add_optional_tab(tabs, tab, icon, description, name):
             tab.tab_icon = icon
@@ -393,6 +395,11 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
     @profiler
     def load_wallet(self, wallet):
         wallet.thread = TaskThread(self, self.on_error)
+
+        #Load Masternodes
+        self.masternode_manager = MasternodeManager(self.wallet, self.config)
+        self.masternode_tab.update_nodelist(self.wallet, self.config, self.masternode_manager)
+
         self.update_recently_visited(wallet.storage.path)
         self.need_update.set()
         # Once GUI has been initialized check if we want to announce something since the callback has been called before the GUI was initialized
@@ -3428,3 +3435,8 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, Logger):
                      "to see it, you need to broadcast it."))
             win.msg_box(QPixmap(icon_path("offline_tx.png")), None, _('Success'), msg)
             return True
+
+        def create_masternode_tab(self):
+            from .masternode_tab import MasternodeTab
+            self.masternode_tab = masternodetab = MasternodeTab(self)
+            return masternodetab
